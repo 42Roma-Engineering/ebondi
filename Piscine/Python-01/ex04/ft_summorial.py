@@ -28,8 +28,10 @@ if __name__=="__main__":
 			if n >= 0:
 				sum = 0
 				n += 1
-				for i in range(n):
+				i = 0
+				while i < n:
 					sum += i
+					i += 1
 				print('The sum is:', end=' ')
 				print(sum)
 			else:

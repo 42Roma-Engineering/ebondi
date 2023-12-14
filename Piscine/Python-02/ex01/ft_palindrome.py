@@ -5,9 +5,11 @@ def is_palindrome(word):
 		size = len(word)
 	except TypeError:
 		return
-	for i in range(size):
+	i = 0
+	while i < size:
 		if word[i] != word[(i * -1) -1]:
 			return False
+		i += 1
 	return True
 
 if __name__=="__main__":

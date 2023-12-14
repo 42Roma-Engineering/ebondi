@@ -7,7 +7,8 @@ def ft_ext_pos():
 			min = max
 			max_pos = 1
 			min_pos = 1
-			for i in range (1 , len(sys.argv)):
+			i = 1
+			while i < len(sys.argv):
 				n = int(sys.argv[i])
 				if n > max:
 					max = n
@@ -15,6 +16,7 @@ def ft_ext_pos():
 				elif n < min:
 					min = n
 					min_pos = i
+				i += 1
 		except (IndexError, ValueError) as e:
 			return
 		min_pos -= 1
