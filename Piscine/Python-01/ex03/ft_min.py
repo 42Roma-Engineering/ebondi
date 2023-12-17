@@ -27,18 +27,18 @@ def float_convert(string):
 				break
 	except IndexError:
 		pass
-	n *= sign
+	n *= sign / 1
 	return n
 
 def my_min(a = '0', b = '0', c = '0'):
-	if a == 0 and b == 0 and c == 0:
+	if a == '0' and b == '0' and c == '0':
 		return 0
 	try:
 		min = float_convert(a)
 		n2 = float_convert(b)
 		n3 = float_convert(c)
 	except KeyError:
-		return -1
+		return False
 	if (n2 < min):
 		min = n2
 	if (n3 < min):
@@ -48,7 +48,7 @@ def my_min(a = '0', b = '0', c = '0'):
 if __name__=="__main__":
 	if (len(sys.argv) == 4):
 		mi = my_min(sys.argv[1], sys.argv[2], sys.argv[3])
-		if mi != -1:
+		if mi != False:
 			print('The min is:', end=' ')
 			print(mi)
 	else:

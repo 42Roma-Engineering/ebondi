@@ -3,7 +3,7 @@ def ft_abs():
 		r = eval(input('Insert an expression: '))
 	except (NameError) as e:
 		return
-	if (r < 1):
+	if (r < 0):
 		r *= -1
 	print('The result is:', end=' ')
 	print(r)
