@@ -1,6 +1,7 @@
 import sys
 
 def is_palindrome(word): 
+	word = word.replace(" ", "")
 	try:
 		size = len(word)
 	except TypeError:
