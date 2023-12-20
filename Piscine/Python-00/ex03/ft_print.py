@@ -4,35 +4,31 @@ def converter(string):
 	sign = 1
 	i = 0
 	try:
-		while string[i]:
-			if not string[i] in dict_var:
-				return False
-			else:
-				while string[i]:
-					if string[i] in dict_var:
-						n *= 10
-						n += dict_var[string[i]]
-					else:
-						break
-					i += 1
-				break
-			i += 1
+		string[i]
 	except IndexError:
-		pass
+		return 'err'
+	while string[i] == '-' or string[i] == '+':
+		if string[i] == '-':
+			sign *= -1
+		i += 1
+	string = string[i:]
+	for c in string:
+		if c not in dict_var:
+			return 'err'
+		n *= 10
+		n += dict_var[c]
 	n *= sign
 	return n
 
 def ft_n_n():
 	s = input('Insert a string: ')
 	n = converter(input('Insert an integer: '))
-	if n == False:
+	if n == 'err':
 		return
-	if n >= len(s):
-		print('Error: index out of range')
-	elif n == 0:
-		print(s[n] + ' ' + s[len(s) - 1])
-	else:
-		print(s[n] + ' ' + s[len(s) - n])
+	try:
+		print(s[n], s[-n])
+	except IndexError as e:
+		print("Error: index out of range")
 
 if __name__=="__main__":
 	ft_n_n()

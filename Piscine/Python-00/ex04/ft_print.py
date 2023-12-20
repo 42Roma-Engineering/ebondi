@@ -4,21 +4,19 @@ def converter(string):
 	sign = 1
 	i = 0
 	try:
-		while string[i]:
-			if not string[i] in dict_var:
-				return False
-			else:
-				while string[i]:
-					if string[i] in dict_var:
-						n *= 10
-						n += dict_var[string[i]]
-					else:
-						break
-					i += 1
-				break
-			i += 1
+		string[i]
 	except IndexError:
-		pass
+		return 'err'
+	while string[i] == '-' or string[i] == '+':
+		if string[i] == '-':
+			sign *= -1
+		i += 1
+	string = string[i:]
+	for c in string:
+		if c not in dict_var:
+			return 'err'
+		n *= 10
+		n += dict_var[c]
 	n *= sign
 	return n
 
@@ -26,17 +24,14 @@ def converter(string):
 def inside_range():
 	s = input('Insert a string: ')
 	n = converter(input('Insert an integer: '))
-	if n == False:
+	if n == 'err':
 		return
 	if n >= len(s):
 		print('Error: index out of range')
+	elif n == 1:
+		print(s[n:])
 	else:
-		s_len = len(s)
-		max = s_len - n
-		while n <= max and n < s_len:
-			print(s[n], end='')
-			n = n + 1
-		print()
+		print(s[n:-(n - 1)])
 
 if __name__=="__main__":
 	inside_range()

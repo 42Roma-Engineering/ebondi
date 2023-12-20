@@ -4,34 +4,30 @@ def converter(string):
 	sign = 1
 	i = 0
 	try:
-		while string[i]:
-			if string[i] == '-':
-				sign *= -1
-			elif not string[i] in dict_var:
-				return False
-			else:
-				while string[i]:
-					if string[i] in dict_var:
-						n *= 10
-						n += dict_var[string[i]]
-					else:
-						break
-					i += 1
-				break
-			i += 1
+		string[i]
 	except IndexError:
-		pass
+		return 'err'
+	while string[i] == '-' or string[i] == '+':
+		if string[i] == '-':
+			sign *= -1
+		i += 1
+	string = string[i:]
+	for c in string:
+		if c not in dict_var:
+			return 'err'
+		n *= 10
+		n += dict_var[c]
 	n *= sign
 	return n
 
 def ft_sum():
 	s1 = input('Insert your first integer: ')
 	n1 = converter(s1)
-	if n1 == False:
+	if n1 == 'err':
 		return
 	s2 = input('Insert your second integer: ')
 	n2 = converter(s2)
-	if n2 == False:
+	if n2 == 'err':
 		return
 	print(n1 + n2)
 
