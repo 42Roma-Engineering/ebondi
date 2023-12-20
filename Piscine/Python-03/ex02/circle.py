@@ -30,8 +30,9 @@ def float_convert(string):
 	n = 0
 	sign = 1
 	try:
-		while string[i] == '-':
-			sign *= -1
+		while string[i] == '-' or string[i] == '+':
+			if string[i] == '-':
+				sign *= -1
 			i += 1
 		while string[i]:
 			n *= 10
