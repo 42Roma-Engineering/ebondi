@@ -10,8 +10,9 @@ def float_convert(string):
 	n = 0
 	sign = 1
 	try:
-		while string[i] == '-':
-			sign *= -1
+		while string[i] == '-' or string[i] == '+':
+			if string[i] == '-':
+				sign *= -1
 			i += 1
 		while string[i]:
 			n *= 10
@@ -38,7 +39,7 @@ def my_min(a = '0', b = '0', c = '0'):
 		n2 = float_convert(b)
 		n3 = float_convert(c)
 	except KeyError:
-		return False
+		return 'err'
 	if (n2 < min):
 		min = n2
 	if (n3 < min):
@@ -48,7 +49,7 @@ def my_min(a = '0', b = '0', c = '0'):
 if __name__=="__main__":
 	if (len(sys.argv) == 4):
 		mi = my_min(sys.argv[1], sys.argv[2], sys.argv[3])
-		if mi != False:
+		if mi != 'err':
 			print('The min is:', end=' ')
 			print(mi)
 	else:

@@ -6,18 +6,19 @@ def converter(string):
 	sign = 1
 	i = 0
 	try:
-		while string[i]:
-			if string[i] == '-':
-				sign *= -1
-			else:
-				while string[i]:
-					n *= 10
-					n += dict_var[string[i]]
-					i += 1
-				break
-			i += 1
+		string[i]
 	except IndexError:
-		pass
+		return 'err'
+	while string[i] == '-' or string[i] == '+':
+		if string[i] == '-':
+			sign *= -1
+		i += 1
+	string = string[i:]
+	for c in string:
+		if c not in dict_var:
+			return 'err'
+		n *= 10
+		n += dict_var[c]
 	n *= sign
 	return n
 
@@ -36,7 +37,7 @@ if __name__=="__main__":
 				print(sum)
 			else:
 				print('Error! n must be >=0')
-		except KeyError:
+		except (KeyError, TypeError) as e:
 			pass
 	else:
 		print('Error! Usage: python3 ft_summorial.py <n>')
