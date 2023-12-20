@@ -4,18 +4,19 @@ def converter(string):
 	sign = 1
 	i = 0
 	try:
-		while string[i]:
-			if string[i] == '-':
-				sign *= -1
-			else:
-				while string[i]:
-					n *= 10
-					n += dict_var[string[i]]
-					i += 1
-				break
-			i += 1
+		string[i]
 	except IndexError:
-		pass
+		raise KeyError
+	while string[i] == '-' or string[i] == '+':
+		if string[i] == '-':
+			sign *= -1
+		i += 1
+	string = string[i:]
+	for c in string:
+		if c not in dict_var:
+			raise KeyError
+		n *= 10
+		n += dict_var[c]
 	n *= sign
 	return n
 
